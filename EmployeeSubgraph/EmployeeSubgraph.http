@@ -1,0 +1,6 @@
+@EmployeeSubgraph_HostAddress = http://localhost:5115
+
+GET {{EmployeeSubgraph_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

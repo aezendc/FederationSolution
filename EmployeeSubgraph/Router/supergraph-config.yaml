@@ -1,0 +1,10 @@
+federation_version: =2.10.0
+subgraphs:
+  employees:
+    routing_url: http://localhost:5115/graphql
+    schema:
+      subgraph_url: http://localhost:5115/graphql
+  users:
+    routing_url: http://localhost:5227/graphql
+    schema:
+      subgraph_url: http://localhost:5227/graphql

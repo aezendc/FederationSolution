@@ -1,0 +1,55 @@
+schema @link(url: "https:\/\/specs.apollo.dev\/federation\/v2.6", import: [ "@tag", "@key", "FieldSet" ]) {
+  query: Query
+  mutation: Mutation
+}
+
+"Represents an employee record."
+type Employee @key(fields: "id") {
+  id: ID!
+  userId: String!
+  firstName: String
+  lastName: String
+}
+
+type Mutation {
+  "Create a new employee."
+  createEmployee(userId: Int! firstName: String lastName: String): Employee! @cost(weight: "10")
+}
+
+type Query {
+  "Get all employees."
+  getEmployees: [Employee!]! @cost(weight: "10")
+  "Get a single employee by id."
+  getEmployee(id: ID!): Employee @cost(weight: "10")
+  _service: _Service!
+  _entities(representations: [_Any!]!): [_Entity]!
+}
+
+type User @key(fields: "id") {
+  "A user details."
+  remcommendedEmployee: [Employee!]!
+  id: ID!
+}
+
+"This type provides a field named sdl: String! which exposes the SDL of the service's schema. This SDL (schema definition language) is a printed version of the service's schema including the annotations of federation directives. This SDL does not include the additions of the federation spec."
+type _Service {
+  sdl: String!
+}
+
+"Union of all types that key directive applied. This information is needed by the Apollo federation gateway."
+union _Entity = User | Employee
+
+"The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response."
+directive @cost("The `weight` argument defines what value to add to the overall cost for every appearance, or possible appearance, of a type, field, argument, etc." weight: String!) on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM | INPUT_FIELD_DEFINITION
+
+"Used to indicate a combination of fields that can be used to uniquely identify and fetch an object or interface."
+directive @key(fields: FieldSet! resolvable: Boolean = true) repeatable on OBJECT | INTERFACE
+
+"Links definitions within the document to external schemas."
+directive @link("Gets imported specification url." url: String! "Gets optional list of imported element names." import: [String!]) repeatable on SCHEMA
+
+"Scalar representing a set of fields."
+scalar FieldSet
+
+"The _Any scalar is used to pass representations of entities from external services into the root _entities field for execution. Validation of the _Any scalar is done by matching the __typename and @external fields defined in the schema."
+scalar _Any

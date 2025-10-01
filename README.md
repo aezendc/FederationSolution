@@ -152,7 +152,7 @@ query {
     id
     username
     fullName
-    recommendedEmployee {
+    employeeDetails {
       id
       userId
       firstName
@@ -161,3 +161,6 @@ query {
   }
 }
 ```
+
+Employee Subgraph Queries and Mutations: https://github.com/aezendc/FederationSolution/blob/usecase/EmployeeSubgraph/Employee_GRAPHQL.txt
+User Subgraph Queries and Mutations: https://github.com/aezendc/FederationSolution/blob/usecase/UserSubgraph/User_GRAPHQL.txt

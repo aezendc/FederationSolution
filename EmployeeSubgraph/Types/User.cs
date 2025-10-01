@@ -19,8 +19,8 @@ namespace EmployeeSubgraph.Types
             return new User(id);
         }
 
-        [GraphQLDescription("Recommended employee for this user.")]
-        public async Task<Employee?> RecommendedEmployee([Service] EmployeeService employeeService)
+        [GraphQLDescription("Employee details for this user.")]
+        public async Task<Employee?> EmployeeDetails([Service] EmployeeService employeeService)
         {
             return (await employeeService.GetAllAsync())
                 .FirstOrDefault(e => e.UserId == this.Id);

@@ -30,8 +30,8 @@ type Query {
 }
 
 type User @key(fields: "id") @key(fields: "id") {
-  "Recommended employee for this user."
-  recommendedEmployee: Employee @cost(weight: "10")
+  "Employee details for this user."
+  employeeDetails: Employee @cost(weight: "10")
   id: ID!
 }
 

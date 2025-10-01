@@ -121,9 +121,19 @@ rover subgraph publish $env:APOLLO_GRAPH_REF --name UsersSubgraph --schema "User
 Once both subgraphs are published into supergraph it will automatically stitch the schema for both.
 
 START THE ROUTER
-This will expose the url 127.0.0.1:5000
+Open Powershell
+Go to folder
 ```
 cd Router
+```
+Set variable first
+```
+$env:APOLLO_KEY="<your-graphs-apollo-key>" `
+$env:APOLLO_GRAPH_REF=<your-graph-name@current> `
+```
+
+Then run the command below this will expose the url 127.0.0.1:5000
+```
 ./router --config router-config.yaml
 ```
 

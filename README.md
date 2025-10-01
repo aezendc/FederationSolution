@@ -110,18 +110,12 @@ $env:APOLLO_GRAPH_REF=<your-graph-name@current> `
 
 Publish Employee First
 ```
-rover subgraph publish $env:APOLLO_GRAPH_REF `
-  --name EmployeesSubgraph `
-  --schema "../EmployeeSubgraph/schema.graphql" `
-  --routing-url http://localhost:5115/graphql
+rover subgraph publish $env:APOLLO_GRAPH_REF --name EmployeesSubgraph --schema "EmployeeSubgraph/schema.graphql" --routing-url http://localhost:5115/graphql
 ```
 
 Then the UserSubgraph
 ```
-rover subgraph publish $env:APOLLO_GRAPH_REF `
-  --name UsersSubgraph `
-  --schema "../UserSubgraph/schema.graphql" `
-  --routing-url http://localhost:5227/graphql
+rover subgraph publish $env:APOLLO_GRAPH_REF --name UsersSubgraph --schema "UserSubgraph/schema.graphql" --routing-url http://localhost:5227/graphql
 ```
 
 Once both subgraphs are published into supergraph it will automatically stitch the schema for both.

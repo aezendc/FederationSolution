@@ -162,5 +162,6 @@ query {
 }
 ```
 
-Employee Subgraph Queries and Mutations: https://github.com/aezendc/FederationSolution/blob/usecase/EmployeeSubgraph/Employee_GRAPHQL.txt
-User Subgraph Queries and Mutations: https://github.com/aezendc/FederationSolution/blob/usecase/UserSubgraph/User_GRAPHQL.txt
+[Employee Subgraph Queries and Mutations](https://github.com/aezendc/FederationSolution/blob/usecase/EmployeeSubgraph/Employee_GRAPHQL.txt)
+
+[User Subgraph Queries and Mutations](https://github.com/aezendc/FederationSolution/blob/usecase/UserSubgraph/User_GRAPHQL.txt)

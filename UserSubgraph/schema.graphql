@@ -5,7 +5,11 @@ schema @link(url: "https:\/\/specs.apollo.dev\/federation\/v2.6", import: [ "@ta
 
 type Mutation {
   "Create a new user."
-  createUser(username: String! fullName: String!): User! @cost(weight: "10")
+  createUser(username: String!): User! @cost(weight: "10")
+  "Edit an existing user."
+  editUser(id: String! username: String): User @cost(weight: "10")
+  "Delete a user by ID."
+  deleteUser(id: String!): Boolean! @cost(weight: "10")
 }
 
 type Query {
@@ -23,8 +27,6 @@ type User @key(fields: "id") {
   id: ID!
   "The username for login."
   username: String!
-  "The full display name of the user."
-  fullName: String!
 }
 
 "This type provides a field named sdl: String! which exposes the SDL of the service's schema. This SDL (schema definition language) is a printed version of the service's schema including the annotations of federation directives. This SDL does not include the additions of the federation spec."

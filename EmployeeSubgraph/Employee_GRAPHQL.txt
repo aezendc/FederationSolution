@@ -1,0 +1,52 @@
+EmployeeSubgraph
+
+--------------QUERIES-----------
+
+*GET ALL*
+query {
+  getEmployees {
+    id
+    userId
+    firstName
+    lastName
+  }
+}
+
+*GET BY ID*
+query {
+  getEmployee(id: "1") {
+    id
+    userId
+    firstName
+    lastName
+  }
+}
+
+
+
+-----------MUTATIONS-----------
+
+*CREATE*
+mutation {
+  createEmployee(userId: 2, firstName: "Bob", lastName: "Dylan") {
+    id
+    userId
+    firstName
+    lastName
+  }
+}
+
+*EDIT*
+mutation {
+  editEmployee(id: "2", firstName: "Robert", lastName: "Zimmerman") {
+    id
+    userId
+    firstName
+    lastName
+  }
+}
+
+*DELETE*
+mutation {
+  deleteEmployee(id: "2")
+}

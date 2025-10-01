@@ -14,6 +14,10 @@ type Employee @key(fields: "id") {
 type Mutation {
   "Create a new employee."
   createEmployee(userId: Int! firstName: String lastName: String): Employee! @cost(weight: "10")
+  "Edit an existing employee."
+  editEmployee(id: String! firstName: String lastName: String): Employee @cost(weight: "10")
+  "Delete an employee by ID."
+  deleteEmployee(id: String!): Boolean! @cost(weight: "10")
 }
 
 type Query {
@@ -25,9 +29,9 @@ type Query {
   _entities(representations: [_Any!]!): [_Entity]!
 }
 
-type User @key(fields: "id") {
-  "A user details."
-  remcommendedEmployee: [Employee!]!
+type User @key(fields: "id") @key(fields: "id") {
+  "Recommended employee for this user."
+  recommendedEmployee: Employee @cost(weight: "10")
   id: ID!
 }
 

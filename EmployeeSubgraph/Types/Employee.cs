@@ -15,7 +15,14 @@ public class Employee
 
     [ReferenceResolver]
     public static Employee GetEmployeeById(string id, string? userId, string? firstName, string? lastName)
-        => new(id, userId ?? "0", firstName, lastName);
+    {
+        return new Employee(
+            id,
+            userId ?? "0",
+            firstName,
+            lastName
+        );
+    }
 
     public Employee(string id, string userId, string? firstName, string? lastName)
     {

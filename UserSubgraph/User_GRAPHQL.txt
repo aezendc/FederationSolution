@@ -1,0 +1,44 @@
+UserSubgraph
+
+--------------QUERIES-----------
+*GET ALL*
+query {
+  getUsers {
+    id
+    username
+  }
+}
+
+*GET BY ID*
+query {
+  getUser(id: "1") {
+    id
+    username
+  }
+}
+
+
+
+-----------MUTATIONS-----------
+
+*CREATE*
+mutation {
+  createUser(username: "alice") {
+    id
+    username
+  }
+}
+
+*EDIT*
+mutation {
+  editUser(id: "1", username: "alice123") {
+    id
+    username
+  }
+}
+
+
+*DELETE*
+mutation {
+  deleteUser(id: "1")
+}

@@ -14,21 +14,17 @@ namespace UserSubgraph.Types
         [GraphQLDescription("The username for login.")]
         public string Username { get; set; }
 
-        [GraphQLDescription("The full display name of the user.")]
-        public string FullName { get; set; }
-
         // This is how federation can rehydrate the entity
         [ReferenceResolver]
-        public static User GetUserById(string id, string? username, string? fullName)
+        public static User GetUserById(string id, string? username)
         {
-            return new User(id, username ?? "unknown", fullName ?? "unknown");
+            return new User(id, username ?? "unknown");
         }
 
-        public User(string id, string username, string fullName)
+        public User(string id, string username)
         {
             Id = id;
             Username = username;
-            FullName = fullName;
         }
     }
 

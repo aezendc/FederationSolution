@@ -30,4 +30,28 @@ public class EmployeeService
         await _db.SaveChangesAsync();
         return new Employee(entity.EmployeeId.ToString(), entity.UserId.ToString(), entity.FirstName, entity.LastName);
     }
+
+    public async Task<Employee?> EditAsync(string id, string? firstName, string? lastName)
+    {
+        if (!int.TryParse(id, out var intId)) return null;
+        var entity = await _db.Employees.FirstOrDefaultAsync(e => e.EmployeeId == intId);
+        if (entity is null) return null;
+
+        entity.FirstName = firstName ?? entity.FirstName;
+        entity.LastName = lastName ?? entity.LastName;
+
+        await _db.SaveChangesAsync();
+        return new Employee(entity.EmployeeId.ToString(), entity.UserId.ToString(), entity.FirstName, entity.LastName);
+    }
+
+    public async Task<bool> DeleteAsync(string id)
+    {
+        if (!int.TryParse(id, out var intId)) return false;
+        var entity = await _db.Employees.FirstOrDefaultAsync(e => e.EmployeeId == intId);
+        if (entity is null) return false;
+
+        _db.Employees.Remove(entity);
+        await _db.SaveChangesAsync();
+        return true;
+    }
 }
